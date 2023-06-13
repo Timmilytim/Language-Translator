@@ -4,11 +4,9 @@ import requests
 try:
 	print("------ WELCOME TO TIMMY'S LANGUAGE TRANSLATOR------")
 	while True:
-		print("1. TRANSLATOR \n"
-			  "2. AVAILABLE LANGUAGE CODES \n"
-			  "3. Exit")
-		option = input(">>> ")
-		if option == "1":
+		option = input("1. TRANSLATOR\n2. AVAILABLE LANGUAGE CODES\n3. Exit\n-> ")
+
+		if option == "1":	# First Option for the Translation
 			try:
 				url = "https://google-translate1.p.rapidapi.com/language/translate/v2"
 
@@ -28,19 +26,23 @@ try:
 				response = requests.request("GET", url, headers=headers, params=sentence)
 				response = requests.post(url, data=payload, headers=headers)
 				betterView = json.loads(response.text)["data"]["translations"][0]["translatedText"]
+				
 
 				print("TRANSLATION: ", betterView, " \n")
 			except KeyError:
 				print("LANGUAGE NOT AVAILABLE....\n",
 					  "GO TO THE 'LANGUAGE CODES' OPTION BELOW TO CHECK OUT THE CODES AVAILABLE LANGUAGES.... \n" )
-		elif option == "2":
-			print(''' SOME JARGONS I'M STILL WORKING ON...\n\n
+				
+		elif option == "2":		# Available Language code
+			print('''SOME JARGONS I'M STILL WORKING ON...\n\n
 			''')
-		elif option == "3":
+
+		elif option == "3":		# Exit option
 			print("Exiting...")
 			exit(0)
+
 		else:
 			print("WRONG INPUT \n"
 				  "TRY AGAIN.... \n")
 except requests.exceptions.ConnectionError:
-	print(" Make sure you are Connected to the internet...")
+	print("Make sure you are Connected to the internet...")
