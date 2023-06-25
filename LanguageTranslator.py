@@ -1,5 +1,5 @@
 import json
-import requests
+import httx
 
 try:
 	print("------ WELCOME TO TIMMY'S LANGUAGE TRANSLATOR------")
@@ -25,8 +25,8 @@ try:
 					"X-RapidAPI-Key": "16d35def64msh61682f7697de9a3p1ec241jsnedffd87d0759",
 					"X-RapidAPI-Host": "google-translate1.p.rapidapi.com"
 				}
-				response = requests.request("GET", url, headers=headers, params=sentence)
-				response = requests.post(url, data=payload, headers=headers)
+				response = httpx.get(url, headers=headers, params=sentence)
+				response = httpx.post(url, data=payload, headers=headers)
 				betterView = json.loads(response.text)["data"]["translations"][0]["translatedText"]
 
 				print("TRANSLATION: ", betterView, " \n")
