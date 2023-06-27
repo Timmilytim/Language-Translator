@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 httpx = "*"
+python-dotenv = "*"
+textual = {extras = ["dev"], version = "*"}
 
 [dev-packages]
 black = "*"
