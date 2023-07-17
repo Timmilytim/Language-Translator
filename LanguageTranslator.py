@@ -12,7 +12,6 @@ def trans_index(language, value, keys, sentence):
             key = keys[idx]
 
             trans_late = translator.translate(sentence, dest=key).text
-            print("Long Language", key)
             print(trans_late)
 
         else:
